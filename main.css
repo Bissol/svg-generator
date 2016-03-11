@@ -1,0 +1,24 @@
+.svgDrawing
+{
+	float:left;
+	padding:10px;
+	width: 200;
+	/*height:160px;*/
+}
+
+.dna
+{
+	font-size: 10px;
+	color: #AAA;
+}
+
+.selected
+{
+	background-color: #FEE;
+}
+
+.big
+{
+	width:100%;
+	background-color: #FFF;
+}

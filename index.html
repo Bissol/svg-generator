@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="svggenApp" ng-controller="SvgAppCtrl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Svg {{'Gen ' + test}}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="controllers.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+    <script src="paramService.js" type="text/javascript"></script>
+    <script src="svgService.js" type="text/javascript"></script>
+    <script src="idService.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="main.css" type="text/css" media="screen"/>
+  </head>
+<body>
+	<label for="dnaInput">dna:</label>
+	<input type="text" id="dnaInput" placeholder="D.N.A." ng-model="dnaString" ng-change="dnaChanged()">
+	<button ng-click="generateSvg()">Generate</button>
+	<button ng-click="randomDNA()">Random</button>
+	<button ng-click="testFunc()">test</button>
+	<button ng-click="mutation()">Mutation</button>
+	<label for="depth">depth</label>
+	<input type="number" id="depth" ng-model="depth">
+	<div id="svgContainer"></div>
+	<div ng-repeat="svg in svgs" class="svgDrawing" ng-dblclick="bigcheck = !bigcheck" ng-click="selectSvg($index)" ng-class="{big: bigcheck, selected: $parent.isSelected($index)}">
+		<button ng-click="saveSvg($index)">Save</button>
+		<p class='dna'>D.N.A. = {{svg.dna}}</p>
+		<div ng-bind-html="svg.svg.outerHTML | sanitize"></div>
+	</div>
+	
+</body>
+</html>
